@@ -5,7 +5,7 @@ import (
 	"strings"
 	"sync"
 
-	uuid "github.com/satori/go.uuid"
+	"github.com/google/uuid"
 
 	"github.com/ghettovoice/gosip/log"
 )
@@ -51,7 +51,7 @@ const (
 type MessageID string
 
 func NextMessageID() MessageID {
-	return MessageID(uuid.Must(uuid.NewV4()).String())
+	return MessageID(uuid.Must(uuid.NewRandom()).String())
 }
 
 // Message introduces common SIP message RFC 3261 - 7.

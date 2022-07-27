@@ -4,6 +4,10 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"fmt"
+
+	// "google.golang.org/grpc"
+	// "google.golang.org/protobuf/proto"
 
 	"github.com/ghettovoice/gosip"
 	"github.com/ghettovoice/gosip/log"
@@ -25,7 +29,7 @@ func main() {
 	srvConf := gosip.ServerConfig{}
 	srv := gosip.NewServer(srvConf, nil, nil, logger)
 	srv.Listen("wss", "0.0.0.0:5081", &transport.TLSConfig{Cert: "certs/cert.pem", Key: "certs/key.pem"})
-
+	fmt.Println("Listening 0.0.0.0:5081")
 	<-stop
 
 	srv.Shutdown()
